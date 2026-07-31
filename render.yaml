@@ -1,0 +1,15 @@
+# Ce fichier permet a Render de configurer automatiquement le service
+# des la premiere connexion au depot GitHub, sans avoir a tout
+# remplir manuellement dans l'interface Render.
+services:
+  - type: web
+    name: sports-ai-scraper
+    runtime: docker
+    plan: free
+    region: frankfurt
+    envVars:
+      - key: SCRAPER_API_SECRET
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+    healthCheckPath: /health
